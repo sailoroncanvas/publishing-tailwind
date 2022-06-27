@@ -1,8 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { CategoryButton } from '../components/CategoryButton';
 import { MovieCard } from '../components/MovieCard';
+import popcornImg from '../assets/images/popcorn.jpg';
+import seatsImg from '../assets/images/seats.jpg';
+import trophyImg from '../assets/images/trophy.jpg';
+import upcomingImg from '../assets/images/upcoming.jpg';
 
 const API_KEY = '2ffdaf3bc4ac778f30048fd2213c76ce';
+
+export type Category = {
+  id: number;
+  label: string;
+  url: string;
+  image: string;
+};
+
+const CATEGORY_LIST = [
+  { id: 0, label: '인기있는 영화', url: '/popular', image: popcornImg, title: "Popular Movie" },
+  { id: 1, label: '현재 상영작', url: '/now_playing', image: seatsImg, title: "Today's Special" },
+  { id: 2, label: '평점 높은 순', url: '/top_rated', image: trophyImg, title: "Top Rated" },
+  { id: 3, label: '개봉 예정작', url: '/upcoming', image: upcomingImg, title: "Upcoming" },
+];
+
 
 export type Movie = {
   id: number;
@@ -12,18 +31,6 @@ export type Movie = {
   vote_average: number;
 };
 
-const CATEGORY_LIST = [
-  { id: 0, label: '인기있는영화', url: '/popular' },
-  { id: 1, label: '현재 상영작', url: '/now_playing' },
-  { id: 2, label: '평점 높은 순', url: '/top_rated' },
-  { id: 3, label: '개봉 예정작', url: '/upcoming' },
-];
-
-export type Category = {
-  id: number;
-  label: string;
-  url: string;
-};
 
 export const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -69,9 +76,9 @@ export const HomePage = () => {
         <div className="mb-4 font-bold text-2xl">Category</div>
 
         <div className="flex space-x-6">
-          {CATEGORY_LIST.map((data) => (
-            <CategoryButton category={data} onClick={setCateory} />
-          ))}
+          {CATEGORY_LIST.map((data) =>
+            <CategoryButton key={data.id} category={data} onClick={setCateory} isSelected={data.id === categoryIndex} />
+          )}
           ;
         </div>
       </div>
@@ -104,7 +111,7 @@ export const HomePage = () => {
       <div className="border p-4 rounded-md bg-slate-50 space-y-5">
         <div className="font-bold text-2xl">Today's Special</div>
         {!isLoading &&
-          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
+          movies.map((movie) => (<MovieCard key={movie.id} movie={movie} />))}
 
         <div className="p-0.1 border"></div>
 
@@ -129,6 +136,9 @@ export const HomePage = () => {
             네이버 지도로 길찾기
           </div>
         </div>
+      </div>
+      <div>
+
       </div>
     </div>
   );
