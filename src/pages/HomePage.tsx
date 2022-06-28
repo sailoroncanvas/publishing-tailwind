@@ -57,9 +57,7 @@ export const HomePage = () => {
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    getData(categoryIndex);
-  }, [categoryIndex]);
+
 
   return (
     <div className="m-4 space-y-10">
@@ -121,6 +119,12 @@ export const HomePage = () => {
             alt=""
             className="w-full h-60 object-cover rounded-2xl"
           />
+        </div>
+      </div>
+      <div>
+
+        <div>
+          <div className='border-y-black'></div>
           <div className="space-y-2"></div>
           <div>
             <div className="text-lg font-bold">이화여대 아맛나 식당</div>
@@ -136,8 +140,7 @@ export const HomePage = () => {
             네이버 지도로 길찾기
           </div>
         </div>
-      </div>
-      <div>
+
 
       </div>
     </div>
