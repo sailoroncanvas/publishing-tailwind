@@ -57,7 +57,9 @@ export const HomePage = () => {
     setIsLoading(false);
   };
 
-
+  useEffect(() => {
+    getData(categoryIndex);
+  }, [categoryIndex]);
 
   return (
     <div className="m-4 space-y-10">
@@ -119,12 +121,12 @@ export const HomePage = () => {
             alt=""
             className="w-full h-60 object-cover rounded-2xl"
           />
-        </div>
+      </div>
       </div>
       <div>
 
-        <div>
-          <div className='border-y-black'></div>
+           <div>
+            <div className='border-y-black'></div>
           <div className="space-y-2"></div>
           <div>
             <div className="text-lg font-bold">이화여대 아맛나 식당</div>
@@ -141,8 +143,28 @@ export const HomePage = () => {
           </div>
         </div>
 
+        <div className="space-y-2"></div>
 
       </div>
+
+      <div>
+      <div className="text-2xl font-bold mb-2">최고의 배우</div>
+      <img src="https://t1.daumcdn.net/cfile/tistory/267B5433545B122B30"
+      alt="" className='flex justify-center'></img>
+      <div className='py-4'></div>
+      <div className="text-lg font-bold">Olivia Hussey</div>
+      <div className="text-md font-semi-bold py-2">대표작</div>
+      <div className="text-gray-700">Romeo and Juliet</div>
+      <div className="text-gray-700">Black Christmas</div>
+      <div className="text-gray-700">Mother Teresa</div>
+
+      <div className='py-4'></div>
+
+
+
+          </div>
+
+
     </div>
   );
 };
